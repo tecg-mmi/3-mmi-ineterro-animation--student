@@ -2,13 +2,14 @@ import {settings} from "./settings";
 import {randomInt} from "./framework25/helpers/random";
 import {FallingObstacle} from "./FallingObstacle";
 import {Animation} from "./framework25/Animation";
+import {isPointInCircle} from "./framework25/helpers/collision";
 
 class Main {
-    private canvas: HTMLCanvasElement;
-    private ctx: CanvasRenderingContext2D;
-    private hue: number;
-    private fallingObstacles: FallingObstacle[] = [];
-    private animation: Animation;
+    private readonly canvas: HTMLCanvasElement;
+    private readonly ctx: CanvasRenderingContext2D;
+    private readonly hue: number;
+    private readonly fallingObstacles: FallingObstacle[] = [];
+    private readonly animation: Animation;
 
     constructor() {
         this.canvas = document.getElementById(settings.canvasID) as HTMLCanvasElement;
@@ -30,7 +31,19 @@ class Main {
     private addEventListeners() {
         window.addEventListener("resize", () => {
             this.resizeCanvas();
+        });
+
+        this.canvas.addEventListener("click", (evt) => {
+            for (const fallingObstacle of this.fallingObstacles) {
+                if (isPointInCircle({
+                    x: evt.clientX,
+                    y: evt.clientY
+                }, fallingObstacle.position, fallingObstacle.radius)) {
+                    fallingObstacle.color = settings.redColor;
+                }
+            }
         })
+
     }
 
     private addFallingObstacles() {

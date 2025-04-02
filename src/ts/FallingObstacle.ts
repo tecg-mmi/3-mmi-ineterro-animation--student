@@ -26,7 +26,6 @@ export class FallingObstacle extends Circle {
         this.position.y = randomInt(this.radius, this.canvas.height - this.radius);
     }
 
-
     update() {
         this.position.x += this.speed;
         if (this.position.x >= this.canvas.width + this.radius) {
