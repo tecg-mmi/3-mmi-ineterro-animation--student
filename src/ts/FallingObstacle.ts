@@ -6,8 +6,8 @@ import {iAnimatable} from "./framework25/types/iAnimatable";
 
 export class FallingObstacle extends Circle implements iAnimatable {
     private speed: number;
-    private canvas: HTMLCanvasElement;
-    private hue: number;
+    private readonly canvas: HTMLCanvasElement;
+    private readonly hue: number;
 
     constructor(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement, hue: number) {
         super(ctx, {

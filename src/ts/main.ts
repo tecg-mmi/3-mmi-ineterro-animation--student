@@ -4,11 +4,11 @@ import {FallingObstacle} from "./FallingObstacle";
 import {Animation} from "./framework25/Animation";
 
 export class Main {
-    private canvas: HTMLCanvasElement;
-    private ctx: CanvasRenderingContext2D;
-    private hue: number = randomInt(1, 360);
-    private fallingObstacles: FallingObstacle[] = [];
-    private animation: Animation;
+    private readonly canvas: HTMLCanvasElement;
+    private readonly ctx: CanvasRenderingContext2D;
+    private readonly hue: number = randomInt(1, 360);
+    private readonly fallingObstacles: FallingObstacle[] = [];
+    private readonly animation: Animation;
 
     constructor() {
         this.canvas = document.getElementById(settings.canvasID) as HTMLCanvasElement;
